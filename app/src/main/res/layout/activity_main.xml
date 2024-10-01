@@ -9,11 +9,12 @@
 
     <ListView
         android:id="@+id/listaDeDados"
-        android:layout_width="374dp"
-        android:layout_height="570dp"
+        android:layout_width="371dp"
+        android:layout_height="594dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/border"
         app:layout_constraintBottom_toTopOf="@+id/btnCadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.592"
@@ -39,6 +40,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/listaDeDados"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
