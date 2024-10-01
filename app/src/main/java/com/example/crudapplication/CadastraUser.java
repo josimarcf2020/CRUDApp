@@ -49,6 +49,7 @@ public class CadastraUser extends AppCompatActivity {
                 stmt.bindString(1, edtTxtNome.getText().toString());
                 stmt.executeInsert();
                 BD_Dados.close();
+
                 finish();
             }catch (Exception e) {
                 e.printStackTrace();
