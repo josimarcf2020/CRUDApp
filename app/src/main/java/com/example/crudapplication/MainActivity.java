@@ -109,9 +109,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //atributo da classe.
-    private AlertDialog alerta;
+    public AlertDialog alerta;
 
-    private void exemplo_simples(String msg) {
+    public void exemplo_simples(String msg) {
         //Cria o gerador do AlertDialog
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         //define o titulo
