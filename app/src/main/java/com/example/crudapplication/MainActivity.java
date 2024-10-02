@@ -29,10 +29,12 @@ public class MainActivity extends AppCompatActivity {
     public ListView listViewDados;
     public Button btnCadastrarUser;
     public ArrayList<Integer> arrayIds;
+    public Integer idSelecionado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
@@ -57,11 +59,26 @@ public class MainActivity extends AppCompatActivity {
         listViewDados.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                excluir(position);
+                idSelecionado = arrayIds.get(position);
+                excluir(idSelecionado);
                 return true;
             }
         });
 
+        listViewDados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                idSelecionado = arrayIds.get(position);
+                alterar(idSelecionado);
+            }
+        });
+
+    }
+
+    private void alterar(int position) {
+        Intent intent = new Intent(this, AlteraUser.class);
+        intent.putExtra("id", position);
+        startActivity(intent);
     }
 
     public void excluir(Integer position) {
@@ -73,9 +90,15 @@ public class MainActivity extends AppCompatActivity {
         builder.setTitle("Atenção!!!");
         //define a mensagem
         builder.setMessage("Deletar USUÁRIO?");
+        //define a image icon
+        builder.setIcon(android.R.drawable.ic_menu_delete);
 
         builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
+                deleteUser();
+            }
+
+            private void deleteUser() {
                 try{
                     BD_Dados = openOrCreateDatabase("CRUDapp", MODE_PRIVATE, null);
                     String sql = "DELETE FROM user WHERE id = ?";
@@ -88,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
                 }catch (Exception e){
                     e.printStackTrace();
                 }
-
             }
         });
 
@@ -116,15 +138,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void inserirDados() {
-    }
-
     private void listarDados() {
 
         try {
             arrayIds = new ArrayList<Integer>();
             BD_Dados = openOrCreateDatabase("CRUDapp", MODE_PRIVATE, null);
             Cursor meuCursor = BD_Dados.rawQuery("SELECT id, nome FROM user;", null);
+
             ArrayList<String> linhas = new ArrayList<String>();
             ArrayAdapter meuAdapter = new ArrayAdapter<String>(
                     this,
@@ -149,13 +169,11 @@ public class MainActivity extends AppCompatActivity {
     public void criarBanco() {
 
         try{
-
             BD_Dados = openOrCreateDatabase("CRUDapp", MODE_PRIVATE, null);
             BD_Dados.execSQL("CREATE TABLE IF NOT EXISTS user(" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "nome VARCHAR)");
             BD_Dados.close();
-
         }catch (Exception e) {
             e.printStackTrace();
         }

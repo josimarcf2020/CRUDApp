@@ -10,9 +10,6 @@ import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class CadastraUser extends AppCompatActivity {
 
@@ -27,7 +24,7 @@ public class CadastraUser extends AppCompatActivity {
         setContentView(R.layout.activity_cadastra_user);
 
         edtTxtNome = (EditText) findViewById(R.id.edtTextNome);
-        btGravarUser = (Button) findViewById(R.id.btGravarUser);
+        btGravarUser = (Button) findViewById(R.id.btAlterarUser);
 
         btGravarUser.setOnClickListener(new View.OnClickListener() {
             @Override
