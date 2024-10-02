@@ -5,33 +5,36 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CadastraUser">
+    tools:context=".AlteraUser">
 
     <EditText
         android:id="@+id/edtTextNome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="10dp"
         android:ems="10"
         android:hint="@string/digite_o_nome_do_usu_rio"
         android:inputType="text"
+        android:textColorHint="#546E7A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/btAlterarUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Gravar usuário"
+        android:text="Alterar usuário"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtTextNome" />
+        app:layout_constraintTop_toBottomOf="@+id/edtTextNome"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView"
@@ -39,10 +42,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:layout_marginEnd="1dp"
-        android:text="Cadastrando usuário"
+        android:text="@string/alterando_usu_rio"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

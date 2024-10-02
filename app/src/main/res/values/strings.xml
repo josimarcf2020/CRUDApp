@@ -3,4 +3,5 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="digite_o_nome_do_usu_rio">Digite o nome do usuário</string>
     <string name="name">Name</string>
+    <string name="alterando_usu_rio">Alterando usuário</string>
 </resources>
