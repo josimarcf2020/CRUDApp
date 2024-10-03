@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     BD_Dados = openOrCreateDatabase("CRUDapp", MODE_PRIVATE, null);
                     String sql = "DELETE FROM user WHERE id = ?";
                     SQLiteStatement stmt = BD_Dados.compileStatement(sql);
-                    stmt.bindLong(1, arrayIds.get(position));
+                    stmt.bindLong(1, position);
                     stmt.executeUpdateDelete();
                     listarDados();
                     BD_Dados.close();
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         //define um botão como negativo.
         builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface arg0, int arg1) {
-                Toast.makeText(MainActivity.this, "Deleção CANCELADA!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Deleção CANCELADA!", Toast.LENGTH_SHORT).show();
             }
         });
 
